@@ -27,10 +27,10 @@ C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\b
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\bin\Debug\netcoreapp2.0\SpiralWorks.Data.pdb
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\bin\Debug\netcoreapp2.0\SpiralWorks.Interfaces.pdb
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\bin\Debug\netcoreapp2.0\SpiralWorks.Model.pdb
-C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\obj\Debug\netcoreapp2.0\SpiralWorks.Web.csprojAssemblyReference.cache
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\obj\Debug\netcoreapp2.0\SpiralWorks.Web.csproj.CoreCompileInputs.cache
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\obj\Debug\netcoreapp2.0\SpiralWorks.Web.AssemblyInfoInputs.cache
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\obj\Debug\netcoreapp2.0\SpiralWorks.Web.AssemblyInfo.cs
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\obj\Debug\netcoreapp2.0\SpiralWorks.Web.csproj.CopyComplete
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\obj\Debug\netcoreapp2.0\SpiralWorks.Web.dll
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\obj\Debug\netcoreapp2.0\SpiralWorks.Web.pdb
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Web\obj\Debug\netcoreapp2.0\SpiralWorks.Web.csprojAssemblyReference.cache

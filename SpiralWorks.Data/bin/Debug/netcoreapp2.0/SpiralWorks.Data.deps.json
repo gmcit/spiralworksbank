@@ -13,9 +13,7 @@
           "Microsoft.Extensions.Configuration.FileExtensions": "2.1.0",
           "Microsoft.Extensions.Configuration.Json": "2.1.0",
           "SpiralWorks.Interfaces": "1.0.0",
-          "SpiralWorks.Model": "1.0.0",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.0.3.0",
-          "Microsoft.Extensions.Identity.Stores": "2.0.3.0"
+          "SpiralWorks.Model": "1.0.0"
         },
         "runtime": {
           "SpiralWorks.Data.dll": {}
@@ -803,16 +801,6 @@
         "runtime": {
           "SpiralWorks.Model.dll": {}
         }
-      },
-      "Microsoft.AspNetCore.Identity.EntityFrameworkCore/2.0.3.0": {
-        "runtime": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Identity.Stores/2.0.3.0": {
-        "runtime": {
-          "Microsoft.Extensions.Identity.Stores.dll": {}
-        }
       }
     }
   },
@@ -1459,16 +1447,6 @@
     },
     "SpiralWorks.Model/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.AspNetCore.Identity.EntityFrameworkCore/2.0.3.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.Extensions.Identity.Stores/2.0.3.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

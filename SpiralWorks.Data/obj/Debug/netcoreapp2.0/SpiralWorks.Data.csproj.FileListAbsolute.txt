@@ -24,3 +24,13 @@ C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\obj\Debug\netcoreapp2.0\SpiralWorks.Data.AssemblyInfo.cs
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\obj\Debug\netcoreapp2.0\SpiralWorks.Data.dll
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\obj\Debug\netcoreapp2.0\SpiralWorks.Data.pdb
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\bin\Debug\netcoreapp2.0\SpiralWorks.Data.deps.json
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\bin\Debug\netcoreapp2.0\SpiralWorks.Data.runtimeconfig.json
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\bin\Debug\netcoreapp2.0\SpiralWorks.Data.runtimeconfig.dev.json
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\bin\Debug\netcoreapp2.0\SpiralWorks.Data.dll
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\bin\Debug\netcoreapp2.0\SpiralWorks.Data.pdb
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\bin\Debug\netcoreapp2.0\SpiralWorks.Interfaces.dll
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\bin\Debug\netcoreapp2.0\SpiralWorks.Model.dll
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\bin\Debug\netcoreapp2.0\SpiralWorks.Interfaces.pdb
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\bin\Debug\netcoreapp2.0\SpiralWorks.Model.pdb
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Data\obj\Debug\netcoreapp2.0\SpiralWorks.Data.csproj.CopyComplete
