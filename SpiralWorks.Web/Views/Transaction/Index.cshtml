@@ -1,0 +1,60 @@
+﻿@model TransactionViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<form name="form1" asp-controller="Transaction" asp-action="Index">
+    <div class="container">
+        <div class="well">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Bank Transactions</h3>
+                    <p>
+                        <a class="btn btn-success btn-sm" asp-action="Create">Create New</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-offset-4">
+                    <div class="form-group">
+                        <label>Bank Accounts</label>
+                        <select id="AccountId" asp-for="AccountId" class="form-control" asp-items="@ViewBag.AccountList" onchange="DoPostBack();"></select>
+                        <span asp-validation-for="AccountId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="transactList">
+                    @{
+                        await Html.RenderPartialAsync("TransactionList", Model.TransactionList);
+                    }
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+
+
+            function DoPostBack() {
+
+                 $.ajax({
+                     url: '@Url.Action("List", "Transaction")',
+                     data: {
+                         accountId: $('#AccountId').val()
+                     },
+                    cache: false,
+                    type: 'get'
+                }).done(function (response) {
+                    $('#transactList').html(response);
+
+                });
+            }
+
+
+</script>
