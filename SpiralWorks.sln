@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Model", "SpiralWorks.Model\SpiralWorks.Model.csproj", "{F33BB4BD-96AF-4047-8886-A2016A7E05B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Interfaces", "SpiralWorks.Interfaces\SpiralWorks.Interfaces.csproj", "{CCE06E4E-09CC-4BB7-AC17-BD71E141C282}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Data", "SpiralWorks.Data\SpiralWorks.Data.csproj", "{3D96F998-5125-4115-82FB-9A4C06DF03F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiralWorks.Web", "SpiralWorks.Web\SpiralWorks.Web.csproj", "{3608708D-AA68-42B1-8A7F-888D8E9298FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F33BB4BD-96AF-4047-8886-A2016A7E05B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F33BB4BD-96AF-4047-8886-A2016A7E05B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F33BB4BD-96AF-4047-8886-A2016A7E05B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F33BB4BD-96AF-4047-8886-A2016A7E05B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE06E4E-09CC-4BB7-AC17-BD71E141C282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE06E4E-09CC-4BB7-AC17-BD71E141C282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE06E4E-09CC-4BB7-AC17-BD71E141C282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE06E4E-09CC-4BB7-AC17-BD71E141C282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D96F998-5125-4115-82FB-9A4C06DF03F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D96F998-5125-4115-82FB-9A4C06DF03F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D96F998-5125-4115-82FB-9A4C06DF03F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D96F998-5125-4115-82FB-9A4C06DF03F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3608708D-AA68-42B1-8A7F-888D8E9298FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3608708D-AA68-42B1-8A7F-888D8E9298FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3608708D-AA68-42B1-8A7F-888D8E9298FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3608708D-AA68-42B1-8A7F-888D8E9298FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {2F5E397B-E0E3-494C-96A1-08A5F0E555E6}
+	EndGlobalSection
+EndGlobal
