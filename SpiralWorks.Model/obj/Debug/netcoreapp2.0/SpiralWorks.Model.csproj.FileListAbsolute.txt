@@ -18,3 +18,4 @@ C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Model
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Model\obj\Debug\netcoreapp2.0\SpiralWorks.Model.AssemblyInfo.cs
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Model\obj\Debug\netcoreapp2.0\SpiralWorks.Model.dll
 C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Model\obj\Debug\netcoreapp2.0\SpiralWorks.Model.pdb
+C:\Users\user.Dell-1013\Source\Repos\spiralworksbank\src\trunk\SpiralWorks.Model\obj\Debug\netcoreapp2.0\SpiralWorks.Model.csprojAssemblyReference.cache

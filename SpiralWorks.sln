@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Data", "SpiralW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Web", "SpiralWorks.Web\SpiralWorks.Web.csproj", "{3608708D-AA68-42B1-8A7F-888D8E9298FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiralWorks.Test", "SpiralWorks.Test\SpiralWorks.Test.csproj", "{AA82D9CD-90F7-42E0-9305-9487AE61035E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3608708D-AA68-42B1-8A7F-888D8E9298FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3608708D-AA68-42B1-8A7F-888D8E9298FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3608708D-AA68-42B1-8A7F-888D8E9298FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA82D9CD-90F7-42E0-9305-9487AE61035E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA82D9CD-90F7-42E0-9305-9487AE61035E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA82D9CD-90F7-42E0-9305-9487AE61035E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA82D9CD-90F7-42E0-9305-9487AE61035E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

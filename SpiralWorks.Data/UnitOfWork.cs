@@ -51,6 +51,7 @@ namespace SpiralWorks.Data
                     {
                         var dbValues = Convert.ChangeType(dbEntry.ToObject(), x.GetType()); //Todo: Iterate on the Types to get the Property
                                                                                             //via Reflection match the property names.
+                                                                                            //to get specific errors.
                     }
 
                 });
