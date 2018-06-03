@@ -13,11 +13,13 @@ namespace SpiralWorks.Model
         public int TransactionId { get; set; }
         [ForeignKey("Account")]
         public int AccountId { get; set; }
-        public string Description {get;set;}
+        [Required]
+        public string TransactionType {get;set;}
         public decimal Debit { get; set; }
         public decimal Credit { get; set; }
+        public decimal Balance { get; set; }
         [ForeignKey("Account")]
-        public int SourceAccountId { get; set; }
+        public int ToAccountId { get; set; }
         [Timestamp]
         public byte[] RowVersion { get; set; }
         public DateTime DateCreated { get; set; }

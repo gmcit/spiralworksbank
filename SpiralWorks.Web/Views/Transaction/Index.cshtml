@@ -1,17 +1,24 @@
 ﻿@model TransactionViewModel
+@using SpiralWorks.Interfaces;
+@using SpiralWorks.Web.Helpers;
+@inject IUnitOfWork uow;
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor;
 
 @{
     ViewData["Title"] = "Index";
+    var user = HttpContextAccessor.HttpContext.Session.Get<SpiralWorks.Model.User>("CurrentUser");
 }
+
 <br />
-<form name="form1" asp-controller="Transaction" asp-action="Index">
+<form name="form1" asp-controller="Transaction" asp-action="Index" >
     <div class="container">
         <div class="well">
             <div class="row">
                 <div class="col-md-12">
                     <h3>Bank Transactions</h3>
                     <p>
-                        <a class="btn btn-success btn-sm" asp-action="Create">Create New</a>
+                        <a class="btn btn-success btn-sm" asp-action="Create" asp-route-id="@Model.AccountId">Create New</a>
                     </p>
                 </div>
             </div>
@@ -19,7 +26,7 @@
                 <div class="col-md-4 col-offset-4">
                     <div class="form-group">
                         <label>Bank Accounts</label>
-                        <select id="AccountId" asp-for="AccountId" class="form-control" asp-items="@ViewBag.AccountList" onchange="DoPostBack();"></select>
+                        <select id="AccountId" asp-for="AccountId" class="form-control" asp-items="@SelectListHelper.AccountList(uow, user.UserId)" onchange="DoPostBack();"></select>
                         <span asp-validation-for="AccountId" class="text-danger"></span>
                     </div>
                 </div>

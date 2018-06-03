@@ -1,11 +1,17 @@
-﻿@model SpiralWorks.Model.Account
+﻿@model SpiralWorks.Web.Models.TransactionItemViewModel
+@using SpiralWorks.Web.Helpers;
+@using SpiralWorks.Interfaces;
+@inject IUnitOfWork uow;
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
 @{
     ViewData["Title"] = "Create";
+    var user = HttpContextAccessor.HttpContext.Session.Get<SpiralWorks.Model.User>("CurrentUser");
 }
 
 <div class="row">
     <h2>Create</h2>
-    <h4>Auction Event</h4>
+    <h4>Bank Transaction</h4>
     <hr />
 </div>
 <div class="row">
@@ -14,23 +20,24 @@
             <div class="col-md-6">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="AccountNumber" class="control-label"></label>
-                    <input asp-for="AccountNumber" class="form-control" />
-                    <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                    <label>Transaction Type</label>
+                    <select id="TransactionType" asp-for="TransactionType" class="form-control" asp-items="@SelectListHelper.TransactionTypeList()" onchange=""></select>
+                    <span asp-validation-for="TransactionType" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="AccountName" class="control-label"></label>
-                    <input asp-for="AccountName" class="form-control" />
-                    <span asp-validation-for="AccountName" class="text-danger"></span>
+                    <label>Bank Accounts</label>
+                    <select id="AccountId" asp-for="AccountId" class="form-control" asp-items="@SelectListHelper.AccountList(uow, user.UserId)" onchange=""></select>
+                    <span asp-validation-for="AccountId" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
-                    <label asp-for="Balance" class="control-label"></label>
-                    <input asp-for="Balance" class="form-control" />
-                    <span asp-validation-for="Balance" class="text-danger"></span>
+                    <label asp-for="Amount" class="control-label"></label>
+                    <input asp-for="Amount" class="form-control" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="DateCreated" class="control-label"></label>
-                    <div class='input-group date' id='datetimepicker2'>
+                    <div class='input-group date' id='DateCreated'>
                         <input asp-for="DateCreated" class="form-control" type='date' />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
@@ -59,5 +66,4 @@
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }
-
 

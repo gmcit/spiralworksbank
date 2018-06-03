@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<TransactionItemViewModel>
+@using SpiralWorks.Interfaces;
+@using SpiralWorks.Web.Helpers;
+@inject IUnitOfWork uow;
 <table class="table table-striped table-bordered table-hover">
     <thead class="thead-dark">
         <tr>
@@ -9,7 +12,7 @@
                 Account Number
             </th>
             <th scope="col">
-                Description
+                Transaction Type
             </th>
             <th scope="col">
                 Debit
@@ -17,15 +20,14 @@
             <th scope="col">
                 Credit
             </th>
-
             <th scope="col">
-                Source Account Number
+                Balance
             </th>
             <th scope="col">
                 RowVersion
             </th>
             <th scope="col">
-                DateCreated
+                Date Created
             </th>
 
         </tr>
@@ -33,30 +35,31 @@
     <tbody>
         @foreach (var item in Model)
         {
+            var description = (item.TransactionType.Equals("DEP")) ? "(Deposit)" : (item.TransactionType.Equals("WIT")) ? "(Withdrawal)" : $"(Transfer to {item.AccountId.GetAccountNumber(uow)})";
             <tr>
                 <th scope="row">
-                    @Html.DisplayFor(modelItem => item.TransactionId)
+                    @item.TransactionId
                 </th>
                 <td>
-                    @item.AccountNumber
+                    @item.AccountId.GetAccountNumber(uow)
                 </td>
                 <td>
-                    @item.Description
+                    @item.TransactionType  @description
                 </td>
                 <td>
-                    @item.Debit
+                    @item.Debit.EmptyOrDefault()
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Credit)
+                    @item.Credit.EmptyOrDefault()
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SourceAccountNumber)
+                    @item.Balance
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.RowVersion)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateCreated)
+                    @item.DateCreated
                 </td>
             </tr>
         }

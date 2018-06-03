@@ -44,7 +44,7 @@
                             @Html.DisplayFor(modelItem => item.AccountId)
                         </th>
                         <td>
-                            @item.AccountNumber
+                            <a asp-area="" asp-controller="Transaction" asp-action="Index"  asp-route-id="@item.AccountId">  @item.AccountNumber</a>
                         </td>
                         <td>
                             @item.AccountName

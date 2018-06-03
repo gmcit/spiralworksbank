@@ -41,12 +41,15 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BirthDate"></label>
-                <input asp-for="BirthDate" class="form-control" />
+                <label asp-for="BirthDate" class="control-label"></label>
+                <div class='input-group date' id='BirthDate'>
+                    <input asp-for="BirthDate" class="form-control" type='date' />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
                 <span asp-validation-for="BirthDate" class="text-danger"></span>
             </div>
-
-
         </div>
 
     </div>

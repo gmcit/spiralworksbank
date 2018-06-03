@@ -27,6 +27,15 @@ namespace SpiralWorks.Web.Helpers
             });
             return new SelectList(list, "Key", "Value");
         }
+        public static SelectList TransactionTypeList()
+        {
+            var list = new List<ListItem>();
+            list.Add(new ListItem() { Key = "DEP", Value = "Deposit" });
+            list.Add(new ListItem() { Key = "WIT", Value = "Withdrawal" });
+            list.Add(new ListItem() { Key = "TOA", Value = "Transfer to your own Account" });
+            list.Add(new ListItem() { Key = "TSA", Value = "Transfer to someone else's Account" });
+            return new SelectList(list, "Key", "Value");
+        }
     }
     public class ListItem
     {
