@@ -11,14 +11,14 @@
 }
 
 <br />
-<form name="form1" asp-controller="Transaction" asp-action="Index" >
+<form name="form1" asp-controller="Transaction" asp-action="Index">
     <div class="container">
         <div class="well">
             <div class="row">
                 <div class="col-md-12">
                     <h3>Bank Transactions</h3>
                     <p>
-                        <a class="btn btn-success btn-sm" asp-action="Create" asp-route-id="@Model.AccountId">Create New</a>
+                        <a id="Create" class="btn btn-success btn-sm" asp-action="Create" asp-route-id="@Model.AccountId">Create New</a>
                     </p>
                 </div>
             </div>
@@ -38,7 +38,11 @@
                     }
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <a asp-controller="Account" asp-action="Index">Back to Accounts</a>
+                </div>
+            </div>
 
 
 
@@ -49,11 +53,12 @@
 
 
             function DoPostBack() {
-
+                var id = $('#AccountId').val();
+                $("#Create").attr("href", "/Transaction/Create/" + id);
                  $.ajax({
                      url: '@Url.Action("List", "Transaction")',
                      data: {
-                         accountId: $('#AccountId').val()
+                         accountId: id
                      },
                     cache: false,
                     type: 'get'

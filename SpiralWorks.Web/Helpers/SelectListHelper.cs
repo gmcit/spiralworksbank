@@ -27,6 +27,23 @@ namespace SpiralWorks.Web.Helpers
             });
             return new SelectList(list, "Key", "Value");
         }
+        public static SelectList OtherAccountList(IUnitOfWork uow, int userId)
+        {
+            var userAccounts = uow.UserAccounts.FindAll().Where(x => x.UserId != userId).ToList();
+            var model = new List<Account>();
+            userAccounts.ForEach(x =>
+            {
+                var entity = uow.Accounts.FindById(x.AccountId);
+                model.Add(entity);
+            });
+
+            var list = new List<ListItem>();
+            model.ToList().ForEach(x =>
+            {
+                list.Add(new ListItem() { Key = x.AccountId.ToString(), Value = $"{x.AccountNumber} - {x.AccountName}" });
+            });
+            return new SelectList(list, "Key", "Value");
+        }
         public static SelectList TransactionTypeList()
         {
             var list = new List<ListItem>();
