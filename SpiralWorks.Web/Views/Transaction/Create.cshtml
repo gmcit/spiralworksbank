@@ -33,13 +33,8 @@
                                 <span asp-validation-for="AccountId" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label>Transfer To Own</label>
+                                <label>Transfer To </label>
                                 <select id="AccountId" asp-for="ToAccountId" class="form-control" asp-items="@SelectListHelper.AccountList(uow, user.UserId)" onchange=""></select>
-                                <span asp-validation-for="ToAccountId" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label>Transfer To Someone else</label>
-                                <select id="AccountId" asp-for="ToAccountId" class="form-control" asp-items="@SelectListHelper.OtherAccountList(uow, user.UserId)" onchange=""></select>
                                 <span asp-validation-for="ToAccountId" class="text-danger"></span>
                             </div>
                             <div class="form-group">

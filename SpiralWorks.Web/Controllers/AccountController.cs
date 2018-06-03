@@ -20,7 +20,7 @@ namespace SpiralWorks.Web.Controllers
 
         public IActionResult Index()
         {
-            var userAccounts = _uow.UserAccounts.Find(x => x.UserId.Equals(_currentUser.UserId)).ToList();
+            var userAccounts = _uow.UserAccounts.Find(x => x.UserId.Equals(_currentUser?.UserId)).ToList();
             var model = new List<Account>();
             userAccounts.ForEach(x =>
             {

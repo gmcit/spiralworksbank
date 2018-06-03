@@ -53,7 +53,7 @@
                           P @item.Balance
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DateCreated)
+                            @item.DateCreated.ToShortDateString()
                         </td>
 
                         <td>

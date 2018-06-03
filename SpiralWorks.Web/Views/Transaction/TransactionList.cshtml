@@ -6,28 +6,30 @@
     <thead class="thead-dark">
         <tr>
             <th scope="col">
-                TransactionId
+                @Html.DisplayNameFor(model => model.TransactionId)
             </th>
             <th scope="col">
-                Account Number
+                @Html.DisplayNameFor(model => model.AccountNumber)
             </th>
             <th scope="col">
-                Transaction Type
+                @Html.DisplayNameFor(model => model.TransactionType)
             </th>
             <th scope="col">
-                Debit
+                @Html.DisplayNameFor(model => model.Debit)
             </th>
             <th scope="col">
-                Credit
+                @Html.DisplayNameFor(model => model.Credit)
             </th>
             <th scope="col">
-                Balance
+                @Html.DisplayNameFor(model => model.Balance)
+
             </th>
             <th scope="col">
-                RowVersion
+                @Html.DisplayNameFor(model => model.RowVersion)
+
             </th>
             <th scope="col">
-                Date Created
+                @Html.DisplayNameFor(model => model.DateCreated)
             </th>
 
         </tr>
@@ -59,7 +61,7 @@
                     @Html.DisplayFor(modelItem => item.RowVersion)
                 </td>
                 <td>
-                    @item.DateCreated
+                    @item.DateCreated.ToShortDateString()
                 </td>
             </tr>
         }

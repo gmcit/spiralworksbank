@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SpiralWorks.Interfaces;
@@ -19,8 +20,10 @@ namespace SpiralWorks.Web.Helpers
         {
             _uow = uow;
             _session = httpContextAccessor.HttpContext.Session;
-           var user= _session.Get<User>("CurrentUser");
+            var user = _session.Get<User>("CurrentUser");
             _currentUser = user ?? null;
+
+
 
         }
     }

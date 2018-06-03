@@ -23,6 +23,7 @@ namespace SpiralWorks.Model
         [Timestamp]
         public byte[] RowVersion { get; set; }
         [DataType(DataType.Date)]
+        [Display(Name = "Date")]
         public DateTime DateCreated { get; set; }
     }
 

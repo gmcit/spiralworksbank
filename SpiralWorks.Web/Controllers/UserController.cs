@@ -45,6 +45,7 @@ namespace SpiralWorks.Web.Controllers
                     var userIdentity = new ClaimsIdentity(claims, "login");
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                     await HttpContext.SignInAsync(principal);
+
                     return RedirectToLocal(returnUrl);
                 }
                 else
