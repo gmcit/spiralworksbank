@@ -11,6 +11,7 @@ using SpiralWorks.Web.Helpers;
 using SpiralWorks.Web.Models;
 using SpiralWorks.Model;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SpiralWorks.Web.Controllers
 {
@@ -28,7 +29,7 @@ namespace SpiralWorks.Web.Controllers
             ViewBag.AccountList = selectList;
             var list = new List<TransactionItemViewModel>();
 
-            if (id == 0)
+            if (id == null || id == 0)
             {
                 id = Convert.ToInt32(selectList.First().Value);
             }
@@ -72,6 +73,7 @@ namespace SpiralWorks.Web.Controllers
             int.TryParse(id.ToString(), out int accountId);
             var model = new TransactionItemViewModel()
             {
+                TransactionType = "DEP",
                 AccountId = accountId,
                 DateCreated = DateTime.Now
             };
@@ -80,8 +82,6 @@ namespace SpiralWorks.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TransactionItemViewModel model)
         {
-
-
             if (ModelState.IsValid)
             {
                 var account = _uow.Accounts.FindById(model.AccountId);
@@ -92,11 +92,7 @@ namespace SpiralWorks.Web.Controllers
                     AccountId = model.AccountId,
                     DateCreated = model.DateCreated,
                     Balance = account?.Balance ?? 0,
-
                 };
-
-
-
                 var recipient = new Model.Transaction();
 
                 switch (model.TransactionType)
@@ -105,25 +101,26 @@ namespace SpiralWorks.Web.Controllers
                         transaction.Debit = model.Amount;
                         transaction.Balance = transaction.Balance + transaction.Debit;
                         account.Balance = transaction.Balance;
-
                         break;
                     case "WIT":
                         transaction.Credit = model.Amount;
                         transaction.Balance = transaction.Balance - transaction.Credit;
-
                         account.Balance = transaction.Balance;
-
                         break;
                     case "TOA":
                     case "TSA":
                         transaction.Credit = model.Amount;
                         transaction.ToAccountId = model.ToAccountId;
 
+                        var recipientAccount = _uow.Accounts.FindById(model.ToAccountId);
+
                         recipient.AccountId = transaction.ToAccountId;
                         recipient.TransactionType = "TRF";
                         recipient.Debit = model.Amount;
+                        recipient.ToAccountId = model.AccountId;
                         recipient.DateCreated = DateTime.Now;
-
+                        recipient.Balance = recipientAccount.Balance + model.Amount;
+                        _uow.Accounts.Update(recipientAccount);
                         _uow.Transactions.Add(recipient);
 
                         break;
@@ -139,6 +136,20 @@ namespace SpiralWorks.Web.Controllers
                 return RedirectToAction("Index", new RouteValueDictionary(new { id = model.AccountId }));
             }
             return View(model);
+        }
+
+        public async Task<IActionResult> AccountList(string transactionType)
+        {
+            SelectList selectList = null;
+            if (transactionType == "TOA")
+            {
+                selectList = SelectListHelper.AccountList(_uow, _currentUser.UserId);
+            }
+            else
+            {
+                selectList = SelectListHelper.OtherAccountList(_uow, _currentUser.UserId);
+            }
+            return new JsonResult(selectList);
         }
     }
 }

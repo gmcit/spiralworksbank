@@ -24,7 +24,7 @@
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
                                 <label>Transaction Type</label>
-                                <select id="TransactionType" asp-for="TransactionType" class="form-control" asp-items="@SelectListHelper.TransactionTypeList()" onchange=""></select>
+                                <select id="TransactionType" asp-for="TransactionType" class="form-control" asp-items="@SelectListHelper.TransactionTypeList()" onchange="LoadAccounts()"></select>
                                 <span asp-validation-for="TransactionType" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -32,9 +32,9 @@
                                 <select id="AccountId" asp-for="AccountId" class="form-control" asp-items="@SelectListHelper.AccountList(uow, user.UserId)" onchange=""></select>
                                 <span asp-validation-for="AccountId" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            <div id="ToAccountIdGroup" class="form-group" style="display:none;">
                                 <label>Transfer To </label>
-                                <select id="AccountId" asp-for="ToAccountId" class="form-control" asp-items="@SelectListHelper.AccountList(uow, user.UserId)" onchange=""></select>
+                                <select id="ToAccountId" asp-for="ToAccountId" class="form-control" onchange=""></select>
                                 <span asp-validation-for="ToAccountId" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -73,6 +73,34 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function LoadAccounts() {
+        var tranType = $("#TransactionType").val();
+
+        if (tranType === "TOA" || tranType === "TSA") {
+            $("#ToAccountIdGroup").show();
+            $.ajax({
+                url: '@Url.Action("AccountList", "Transaction")',
+                data: {
+                    transactionType: tranType
+                },
+                cache: false,
+                type: 'POST',
+                success: function (data) {
+                    $('#ToAccountId option').remove();
+                    var i = 0;
+                    for (x in data) {
+                        i++;
+                        $("#ToAccountId").append("<option value='" + data[i].value + "'>" + data[i].text + "</option>")
+                    }
+                }
+            });
+        } else {
+            $("#ToAccountIdGroup").hide();
+
+        }
+    };
+</script>
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }

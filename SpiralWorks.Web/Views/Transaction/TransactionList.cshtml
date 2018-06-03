@@ -37,7 +37,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            var description = (item.TransactionType.Equals("DEP")) ? "(Deposit)" : (item.TransactionType.Equals("WIT")) ? "(Withdrawal)" : $"(Transfer to {item.AccountId.GetAccountNumber(uow)})";
+            var description = (item.TransactionType.Equals("DEP")) ? "(Deposit)" : (item.TransactionType.Equals("WIT")) ? "(Withdrawal)" : (item.TransactionType.Equals("TRF")) ? $"(Transferred from {item.ToAccountId.GetAccountNumber(uow)})" : $"(Transferred to {item.ToAccountId.GetAccountNumber(uow)})";
             <tr>
                 <th scope="row">
                     @item.TransactionId

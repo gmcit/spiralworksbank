@@ -22,7 +22,7 @@ namespace SpiralWorks.Web.Helpers
         public static string GetAccountNumber(this int self, IUnitOfWork uow)
         {
             var dto = uow.Accounts.FindById(self);
-            return dto?.AccountNumber ?? "Account Does Not Exists";
+            return dto?.AccountNumber ?? "Unknown Account";
         }
         public static string EmptyOrDefault(this decimal self)
         {
