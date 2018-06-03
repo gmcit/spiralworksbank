@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Interfaces", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Data", "SpiralWorks.Data\SpiralWorks.Data.csproj", "{3D96F998-5125-4115-82FB-9A4C06DF03F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiralWorks.Web", "SpiralWorks.Web\SpiralWorks.Web.csproj", "{3608708D-AA68-42B1-8A7F-888D8E9298FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Web", "SpiralWorks.Web\SpiralWorks.Web.csproj", "{3608708D-AA68-42B1-8A7F-888D8E9298FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

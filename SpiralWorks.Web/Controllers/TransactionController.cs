@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Transactions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SpiralWorks.Interfaces;
 using SpiralWorks.Web.Helpers;
 using SpiralWorks.Web.Models;
-using SpiralWorks.Model;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -102,11 +100,13 @@ namespace SpiralWorks.Web.Controllers
                         transaction.Balance = transaction.Balance + transaction.Debit;
                         account.Balance = transaction.Balance;
                         break;
+
                     case "WIT":
                         transaction.Credit = model.Amount;
                         transaction.Balance = transaction.Balance - transaction.Credit;
                         account.Balance = transaction.Balance;
                         break;
+
                     case "TOA":
                     case "TSA":
                         transaction.Credit = model.Amount;
@@ -120,10 +120,11 @@ namespace SpiralWorks.Web.Controllers
                         recipient.ToAccountId = model.AccountId;
                         recipient.DateCreated = DateTime.Now;
                         recipient.Balance = recipientAccount.Balance + model.Amount;
+
                         _uow.Accounts.Update(recipientAccount);
                         _uow.Transactions.Add(recipient);
-
                         break;
+
                     default:
                         break;
                 }
@@ -138,7 +139,7 @@ namespace SpiralWorks.Web.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> AccountList(string transactionType)
+        public IActionResult AccountList(string transactionType)
         {
             SelectList selectList = null;
             if (transactionType == "TOA")

@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using SpiralWorks.Interfaces;
 using SpiralWorks.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SpiralWorks.Web.Helpers
 {

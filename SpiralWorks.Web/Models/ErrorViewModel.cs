@@ -1,5 +1,3 @@
-using System;
-
 namespace SpiralWorks.Web.Models
 {
     public class ErrorViewModel
