@@ -10,8 +10,8 @@ using SpiralWorks.Data;
 namespace SpiralWorks.Data.Migrations
 {
     [DbContext(typeof(SpiralWorksDBContext))]
-    [Migration("20180602114555_unique")]
-    partial class unique
+    [Migration("20180604001034_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,11 +27,14 @@ namespace SpiralWorks.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountName");
+                    b.Property<string>("AccountName")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<string>("AccountNumber");
 
-                    b.Property<decimal>("Balance");
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("DateCreated");
 
@@ -52,19 +55,22 @@ namespace SpiralWorks.Data.Migrations
 
                     b.Property<int>("AccountId");
 
+                    b.Property<decimal>("Balance");
+
                     b.Property<decimal>("Credit");
 
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<decimal>("Debit");
 
-                    b.Property<string>("Description");
-
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
 
-                    b.Property<int>("SourceAccountId");
+                    b.Property<int>("ToAccountId");
+
+                    b.Property<string>("TransactionType")
+                        .IsRequired();
 
                     b.HasKey("TransactionId");
 
