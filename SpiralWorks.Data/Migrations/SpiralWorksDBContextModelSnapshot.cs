@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SpiralWorks.Data;
+using SpiralWorks.Data.Ef6;
 
 namespace SpiralWorks.Data.Migrations
 {

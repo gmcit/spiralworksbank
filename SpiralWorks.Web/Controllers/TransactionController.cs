@@ -10,28 +10,31 @@ using SpiralWorks.Web.Helpers;
 using SpiralWorks.Web.Models;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SpiralWorks.Model;
 
 namespace SpiralWorks.Web.Controllers
 {
     [Authorize]
-    public class TransactionController : BaseController
+    public class TransactionController : Controller
     {
-        public TransactionController(IUnitOfWork uow, IHttpContextAccessor httpContextAccessor) : base(uow, httpContextAccessor)
+        ITransactionService _transactionService;
+        IAccountService _accountService;
+        ISession _session;
+        User _currentUser;
+        public TransactionController(ITransactionService transactionService, IAccountService accountService, IHttpContextAccessor httpContextAccessor)
         {
+            _transactionService = transactionService;
+            _accountService = accountService;
+            _session = httpContextAccessor.HttpContext.Session;
+            _currentUser = _session.Get<User>("CurrentUser");
         }
 
         public IActionResult Index(int? id)
         {
-            var selectList = SelectListHelper.AccountList(_uow, _currentUser.UserId);
 
-            ViewBag.AccountList = selectList;
             var list = new List<TransactionItemViewModel>();
-
-            if (id == null || id == 0)
-            {
-                id = Convert.ToInt32(selectList.First().Value);
-            }
-            var items = _uow.Transactions.FindAll().Where(x => x.AccountId.Equals(id)).ToList();
+            int.TryParse(id.ToString(), out int accountId);
+            var items = _transactionService.GetTransactions(accountId);
             items.ForEach(x =>
             {
                 var entity = new TransactionItemViewModel();
@@ -41,20 +44,21 @@ namespace SpiralWorks.Web.Controllers
 
             var model = new TransactionViewModel()
             {
-                AccountId = Convert.ToInt32(id),
+                AccountId = accountId,
                 TransactionList = list
             };
 
             return View(model);
         }
         [HttpGet]
-        public IActionResult List(int AccountId)
+        public IActionResult List(int accountId)
         {
             var list = new List<TransactionItemViewModel>();
 
-            if (AccountId > 0)
+            if (accountId > 0)
             {
-                var items = _uow.Transactions.FindAll().Where(x => x.AccountId.Equals(AccountId)).ToList();
+                var items = _transactionService.GetTransactions(accountId);
+
                 items.ForEach(x =>
                 {
                     var entity = new TransactionItemViewModel();
@@ -82,16 +86,20 @@ namespace SpiralWorks.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var account = _uow.Accounts.FindById(model.AccountId);
+                TimeSpan ts = new TimeSpan();
 
-                var transaction = new Model.Transaction()
+
+                var account = _accountService.GetAccount(model.AccountId);
+
+                var transaction = new Transaction()
                 {
                     TransactionType = model.TransactionType,
                     AccountId = model.AccountId,
                     DateCreated = model.DateCreated,
                     Balance = account?.Balance ?? 0,
+                    RowVersion = ts.ToByteArray()
                 };
-                var recipient = new Model.Transaction();
+                var recipient = new Transaction();
 
                 switch (model.TransactionType)
                 {
@@ -112,7 +120,7 @@ namespace SpiralWorks.Web.Controllers
                         transaction.Credit = model.Amount;
                         transaction.ToAccountId = model.ToAccountId;
 
-                        var recipientAccount = _uow.Accounts.FindById(model.ToAccountId);
+                        var recipientAccount = _accountService.GetAccount(model.ToAccountId);
 
                         recipient.AccountId = transaction.ToAccountId;
                         recipient.TransactionType = "TRF";
@@ -121,18 +129,19 @@ namespace SpiralWorks.Web.Controllers
                         recipient.DateCreated = DateTime.Now;
                         recipient.Balance = recipientAccount.Balance + model.Amount;
 
-                        _uow.Accounts.Update(recipientAccount);
-                        _uow.Transactions.Add(recipient);
+                        _accountService.UpdateAccount(recipientAccount);
+
+                        _transactionService.CreateTransaction(recipient);
                         break;
 
                     default:
                         break;
                 }
 
-                _uow.Transactions.Add(transaction);
-                _uow.Accounts.Update(account);
+                _transactionService.CreateTransaction(transaction);
+                _accountService.UpdateAccount(account);
 
-                _uow.SaveChanges();
+
 
                 return RedirectToAction("Index", new RouteValueDictionary(new { id = model.AccountId }));
             }
@@ -144,11 +153,11 @@ namespace SpiralWorks.Web.Controllers
             SelectList selectList = null;
             if (transactionType == "TOA")
             {
-                selectList = SelectListHelper.AccountList(_uow, _currentUser.UserId);
+                selectList = SelectListHelper.AccountList(_accountService, _currentUser.UserId);
             }
             else
             {
-                selectList = SelectListHelper.OtherAccountList(_uow, _currentUser.UserId);
+                selectList = SelectListHelper.OtherAccountList(_accountService, _currentUser.UserId);
             }
             return new JsonResult(selectList);
         }

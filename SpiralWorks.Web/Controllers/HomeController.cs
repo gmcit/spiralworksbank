@@ -2,15 +2,20 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SpiralWorks.Interfaces;
+using SpiralWorks.Model;
 using SpiralWorks.Web.Helpers;
 using SpiralWorks.Web.Models;
 
 namespace SpiralWorks.Web.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
-        public HomeController(IUnitOfWork uow, IHttpContextAccessor httpContextAccessor) : base(uow, httpContextAccessor)
+        ISession _session;
+        User _currentUser;
+        public HomeController( IHttpContextAccessor httpContextAccessor)
         {
+            _session = httpContextAccessor.HttpContext.Session;
+            _currentUser = _session.Get<User>("CurrentUser");
         }
 
         public IActionResult Index()

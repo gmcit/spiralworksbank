@@ -8,35 +8,22 @@ namespace SpiralWorks.Web.Helpers
 {
     public class SelectListHelper
     {
-        public static SelectList AccountList(IUnitOfWork uow, int userId)
+        public static SelectList AccountList(IAccountService service, int userId)
         {
-            var userAccounts = uow.UserAccounts.Find(x => x.UserId.Equals(userId)).ToList();
-            var model = new List<Account>();
-            userAccounts.ForEach(x =>
-            {
-                var entity = uow.Accounts.FindById(x.AccountId);
-                model.Add(entity);
-            });
-
+            var accounts = service.GetAccounts(userId);
             var list = new List<ListItem>();
-            model.ToList().ForEach(x =>
+            accounts.ToList().ForEach(x =>
             {
                 list.Add(new ListItem() { Key = x.AccountId.ToString(), Value = $"{x.AccountNumber} - {x.AccountName}" });
             });
             return new SelectList(list, "Key", "Value");
         }
-        public static SelectList OtherAccountList(IUnitOfWork uow, int userId)
+        public static SelectList OtherAccountList(IAccountService service, int userId)
         {
-            var userAccounts = uow.UserAccounts.FindAll().Where(x => x.UserId != userId).ToList();
-            var model = new List<Account>();
-            userAccounts.ForEach(x =>
-            {
-                var entity = uow.Accounts.FindById(x.AccountId);
-                model.Add(entity);
-            });
+            var accounts = service.GetOtherAccounts(userId);
 
             var list = new List<ListItem>();
-            model.ToList().ForEach(x =>
+            accounts.ToList().ForEach(x =>
             {
                 list.Add(new ListItem() { Key = x.AccountId.ToString(), Value = $"{x.AccountNumber} - {x.AccountName}" });
             });

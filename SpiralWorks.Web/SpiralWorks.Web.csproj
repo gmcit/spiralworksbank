@@ -14,7 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SpiralWorks.Data\SpiralWorks.Data.csproj" />
+    <ProjectReference Include="..\SpiralWorks.Data.Ado\SpiralWorks.Data.Ado.csproj" />
+    <ProjectReference Include="..\SpiralWorks.Interfaces\SpiralWorks.Interfaces.csproj" />
+    <ProjectReference Include="..\SpiralWorks.Model\SpiralWorks.Model.csproj" />
+    <ProjectReference Include="..\SpiralWorks.Services\SpiralWorks.Services.csproj" />
   </ItemGroup>
 
 </Project>

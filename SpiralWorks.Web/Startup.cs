@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SpiralWorks.Data;
+using SpiralWorks.Data.Ado;
+
 using SpiralWorks.Interfaces;
+using SpiralWorks.Services;
 
 namespace SpiralWorks.Web
 {
@@ -25,9 +27,17 @@ namespace SpiralWorks.Web
         {
             services.AddMvc();
             services.AddSession();
-            services.AddDbContext<SpiralWorksDBContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<DbContext, SpiralWorksDBContext>();
+
+            //services.AddDbContext<SpiralWorksDBContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddScoped<DbContext, SpiralWorksDBContext>();
+
+            services.AddScoped<IDbContext, AdoDbContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITransactionService, TransactionService>();
+
             services.AddSingleton(Configuration);
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(c =>
             {

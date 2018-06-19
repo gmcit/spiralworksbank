@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SpiralWorks.Data
+namespace SpiralWorks.Data.Ef6
 {
     public class Repository<T> : IRepository<T> where T : class
     {

@@ -1,7 +1,7 @@
 ﻿@model SpiralWorks.Web.Models.TransactionItemViewModel
 @using SpiralWorks.Web.Helpers;
 @using SpiralWorks.Interfaces;
-@inject IUnitOfWork uow;
+@inject IAccountService service;
 @using Microsoft.AspNetCore.Http;
 @inject IHttpContextAccessor HttpContextAccessor
 @{
@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Bank Accounts</label>
-                                <select id="AccountId" asp-for="AccountId" class="form-control" asp-items="@SelectListHelper.AccountList(uow, user.UserId)" onchange=""></select>
+                                <select id="AccountId" asp-for="AccountId" class="form-control" asp-items="@SelectListHelper.AccountList(service, user.UserId)" onchange=""></select>
                                 <span asp-validation-for="AccountId" class="text-danger"></span>
                             </div>
                             <div id="ToAccountIdGroup" class="form-group" style="display:none;">

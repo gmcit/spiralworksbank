@@ -15,15 +15,21 @@ using SpiralWorks.Web.Models;
 
 namespace SpiralWorks.Web.Controllers
 {
-    public class UserController : BaseController
+    public class UserController : Controller
     {
-        public UserController(IUnitOfWork uow, IHttpContextAccessor httpContextAccessor) : base(uow, httpContextAccessor) { }
+        IUserService _service;
+        ISession _session;
+        public UserController(IUserService service, IHttpContextAccessor httpContextAccessor)
+        {
+            _service = service;
+            _session = httpContextAccessor.HttpContext.Session;
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
             // Clear the existing external cookie to ensure a clean login process
-
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -36,15 +42,15 @@ namespace SpiralWorks.Web.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var status = LoginStatus.Failure;
-                var user = Authenticate(model.Email, model.Password, out status);
+                var user = _service.Authenticate(model.Email, model.Password);
+
                 if (user != null)
                 {
                     var claims = new List<Claim> { new Claim(ClaimTypes.Email, model.Email) };
                     var userIdentity = new ClaimsIdentity(claims, "login");
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                     await HttpContext.SignInAsync(principal);
-
+                    _session.Set("CurrentUser", user);
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -69,8 +75,7 @@ namespace SpiralWorks.Web.Controllers
             {
                 var dto = new User();
                 model.CopyTo(dto);
-                _uow.Users.Add(dto);
-                _uow.SaveChanges();
+                _service.Register(dto);
                 return RedirectToLocal(returnUrl);
 
             }
@@ -97,22 +102,7 @@ namespace SpiralWorks.Web.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
-        private User Authenticate(string email, string password, out LoginStatus status)
-        {
 
-            status = LoginStatus.Failure;
-
-            var user = _uow.Users.Find(x => x.Email.Equals(email) && x.Password.Equals(password)).FirstOrDefault();
-            if (user != null)
-            {
-                status = LoginStatus.Success;
-                _session.Set("CurrentUser", user);
-            }
-
-            return user;
-
-
-        }
 
 
         #endregion

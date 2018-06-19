@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace SpiralWorks.Data
+namespace SpiralWorks.Data.Ef6
 {
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<SpiralWorksDBContext>
     {

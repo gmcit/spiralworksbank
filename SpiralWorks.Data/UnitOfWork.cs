@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using System.Text;
 
-namespace SpiralWorks.Data
+namespace SpiralWorks.Data.Ef6
 {
     public class UnitOfWork : IUnitOfWork
     {

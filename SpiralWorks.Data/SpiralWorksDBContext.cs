@@ -3,7 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using SpiralWorks.Model;
 
-namespace SpiralWorks.Data
+namespace SpiralWorks.Data.Ef6
 {
     public class SpiralWorksDBContext : DbContext
     {

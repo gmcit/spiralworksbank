@@ -11,38 +11,41 @@ using SpiralWorks.Web.Helpers;
 namespace SpiralWorks.Web.Controllers
 {
     [Authorize]
-    public class AccountController : BaseController
+    public class AccountController : Controller
     {
-        public AccountController(IUnitOfWork uow, IHttpContextAccessor httpContextAccessor) : base(uow, httpContextAccessor)
+        IAccountService _accountService;
+
+        ISession _session;
+        User _currentUser;
+
+        public AccountController(IAccountService service, IHttpContextAccessor httpContextAccessor)
         {
+            _accountService = service;
+            _session = httpContextAccessor.HttpContext.Session;
+            _currentUser = _session.Get<User>("CurrentUser");
         }
 
         public IActionResult Index()
         {
-            var userAccounts = _uow.UserAccounts.Find(x => x.UserId.Equals(_currentUser?.UserId)).ToList();
-            var model = new List<Account>();
-            userAccounts.ForEach(x =>
-            {
-                var entity = _uow.Accounts.FindById(x.AccountId);
-                model.Add(entity);
-            });
+            var model = _accountService.GetAccounts(_currentUser.UserId);
 
             return View(model);
         }
         public ActionResult Create()
         {
-            var user = _session.Get<User>("CurrentUser");
-            var dto = new UniqueNumber();
-            _uow.UniqueNumbers.Add(dto);
-            _uow.SaveChanges();
+
+            var dto = _accountService.CreateAccountNumber();
+            var accounts = _accountService.GetAccounts(_currentUser.UserId);
+
             var model = new Account()
             {
-                AccountName = $"{user.FirstName} {user.LastName} #{_uow.UserAccounts.Find(x => x.UserId.Equals(user.UserId)).Count + 1}",
+                AccountName = $"{_currentUser.FirstName} {_currentUser.LastName} #{accounts.Count + 1}",
                 DateCreated = DateTime.Now,
                 Balance = 0,
                 AccountNumber = dto.AccountNumber
 
             };
+
             return View(model);
         }
         [HttpPost]
@@ -50,17 +53,7 @@ namespace SpiralWorks.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _uow.Accounts.Add(model);
-                _uow.SaveChanges();
-
-                var dto = new UserAccount()
-                {
-                    AccountId = model.AccountId,
-                    UserId = _currentUser.UserId
-                };
-                _uow.UserAccounts.Add(dto);
-                _uow.SaveChanges();
-
+                _accountService.CreateAccount(model, _currentUser.UserId);
                 return RedirectToAction("Index");
             }
             return View(model);

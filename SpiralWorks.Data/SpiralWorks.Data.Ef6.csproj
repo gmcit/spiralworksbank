@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>SpiralWorks.Data.Ef6</AssemblyName>
+    <RootNamespace>SpiralWorks.Data.Ef6</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

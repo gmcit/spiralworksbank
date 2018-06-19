@@ -17,9 +17,7 @@ namespace SpiralWorks.Web.Helpers
             _session = httpContextAccessor.HttpContext.Session;
             var user = _session.Get<User>("CurrentUser");
             _currentUser = user ?? null;
-
-
-
         }
+
     }
 }

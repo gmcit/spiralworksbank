@@ -1,4 +1,5 @@
 ﻿using SpiralWorks.Interfaces;
+using System;
 using System.Reflection;
 
 namespace SpiralWorks.Web.Helpers
@@ -15,14 +16,19 @@ namespace SpiralWorks.Web.Helpers
                 }
             }
         }
-        public static string GetAccountNumber(this int self, IUnitOfWork uow)
+        public static string GetAccountNumber(this int self, IAccountService service)
         {
-            var dto = uow.Accounts.FindById(self);
+            var dto = service.GetAccount(self);
             return dto?.AccountNumber ?? "Unknown Account";
         }
         public static string EmptyOrDefault(this decimal self)
         {
             return (self.ToString().Equals("0.00") ? string.Empty : self.ToString());
+        }
+        public static byte[] ToByteArray(this TimeSpan self)
+        {
+            long c = self.Ticks;
+            return BitConverter.GetBytes(c);
         }
     }
 }

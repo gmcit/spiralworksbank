@@ -4559,9 +4559,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user.Dell-1013\\Source\\Repos\\spiralworksbank\\src\\trunk\\SpiralWorks.Data\\SpiralWorks.Data.csproj",
-      "projectName": "SpiralWorks.Data",
-      "projectPath": "C:\\Users\\user.Dell-1013\\Source\\Repos\\spiralworksbank\\src\\trunk\\SpiralWorks.Data\\SpiralWorks.Data.csproj",
+      "projectUniqueName": "C:\\Users\\user.Dell-1013\\Source\\Repos\\spiralworksbank\\src\\trunk\\SpiralWorks.Data\\SpiralWorks.Data.Ef6.csproj",
+      "projectName": "SpiralWorks.Data.Ef6",
+      "projectPath": "C:\\Users\\user.Dell-1013\\Source\\Repos\\spiralworksbank\\src\\trunk\\SpiralWorks.Data\\SpiralWorks.Data.Ef6.csproj",
       "packagesPath": "C:\\Users\\user.Dell-1013\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\user.Dell-1013\\Source\\Repos\\spiralworksbank\\src\\trunk\\SpiralWorks.Data\\obj\\",
       "projectStyle": "PackageReference",

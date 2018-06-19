@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Model", "Spiral
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Interfaces", "SpiralWorks.Interfaces\SpiralWorks.Interfaces.csproj", "{CCE06E4E-09CC-4BB7-AC17-BD71E141C282}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Data", "SpiralWorks.Data\SpiralWorks.Data.csproj", "{3D96F998-5125-4115-82FB-9A4C06DF03F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Data.Ef6", "SpiralWorks.Data\SpiralWorks.Data.Ef6.csproj", "{3D96F998-5125-4115-82FB-9A4C06DF03F3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Web", "SpiralWorks.Web\SpiralWorks.Web.csproj", "{3608708D-AA68-42B1-8A7F-888D8E9298FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiralWorks.Test", "SpiralWorks.Test\SpiralWorks.Test.csproj", "{AA82D9CD-90F7-42E0-9305-9487AE61035E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Test", "SpiralWorks.Test\SpiralWorks.Test.csproj", "{AA82D9CD-90F7-42E0-9305-9487AE61035E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Data.Ado", "SpiralWorks.Data.Ado\SpiralWorks.Data.Ado.csproj", "{B08E18E4-A024-4488-9107-F9D7C2919250}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralWorks.Services", "SpiralWorks.Services\SpiralWorks.Services.csproj", "{83E68D2A-6F01-4037-8819-3780889D3938}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{AA82D9CD-90F7-42E0-9305-9487AE61035E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA82D9CD-90F7-42E0-9305-9487AE61035E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA82D9CD-90F7-42E0-9305-9487AE61035E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B08E18E4-A024-4488-9107-F9D7C2919250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B08E18E4-A024-4488-9107-F9D7C2919250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B08E18E4-A024-4488-9107-F9D7C2919250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B08E18E4-A024-4488-9107-F9D7C2919250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83E68D2A-6F01-4037-8819-3780889D3938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83E68D2A-6F01-4037-8819-3780889D3938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83E68D2A-6F01-4037-8819-3780889D3938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83E68D2A-6F01-4037-8819-3780889D3938}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
