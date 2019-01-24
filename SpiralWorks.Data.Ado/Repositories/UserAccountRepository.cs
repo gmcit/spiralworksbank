@@ -20,7 +20,7 @@ namespace SpiralWorks.Data.Ado.Repositories
         {
 
             _dbContext.CommandType = CommandType.Text;
-            _dbContext.CommandText = $"Insert into UserAccount(UserId,AccountId) Values ({entity.UserId},{entity.AccountId}); Select @@Identity as Identity;";
+            _dbContext.CommandText = $"Insert into UserAccount(UserId,AccountId) Values ({entity.UserId},{entity.AccountId}); Select @@Identity as [Identity];";
                 entity.UserAccountId = _dbContext.ExecuteNonQuery();
 
         }
@@ -31,7 +31,7 @@ namespace SpiralWorks.Data.Ado.Repositories
             list.ForEach(x =>
             {
                 _dbContext.CommandType = CommandType.Text;
-                _dbContext.CommandText = $"Insert into UserAccount(UserId,AccountId) Values ({x.UserId},{x.AccountId}); Select @@Identity as Identity;";
+                _dbContext.CommandText = $"Insert into UserAccount(UserId,AccountId) Values ({x.UserId},{x.AccountId}); Select @@Identity as [Identity];";
                 x.UserAccountId = _dbContext.ExecuteNonQuery();
 
             });

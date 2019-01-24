@@ -20,8 +20,8 @@ namespace SpiralWorks.Data.Ado.Repositories
 
                 _db.CommandType = CommandType.Text;
                 _db.CommandText = $"Insert into Account(AccountNumber, AccountName, Balance, DateCreated) " +
-                 $"Values ('{entity.AccountNumber}','{entity.AccountName}',{entity.Balance},GateDate()); Select @@Identity as [Identity];";
-                entity.AccountId = _db.ExecuteNonQuery();
+                 $"Values ('{entity.AccountNumber}','{entity.AccountName}',{entity.Balance},GetDate()); Select @@Identity as [Identity];";
+
 
         }
 
@@ -33,7 +33,7 @@ namespace SpiralWorks.Data.Ado.Repositories
                     _db.CommandType = CommandType.Text;
                     _db.CommandText = $"Insert into Account(AccountNumber, AccountName, Balance,  DateCreated) " +
                     $"Values ('{x.AccountNumber}','{x.AccountName}',{x.Balance}, GateDate()); Select @@Identity as [Identity];";
-                    x.AccountId = _db.ExecuteNonQuery();
+
 
                 });
 

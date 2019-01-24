@@ -41,8 +41,8 @@ namespace SpiralWorks.Services
         public UniqueNumber CreateAccountNumber()
         {
             var dto = new UniqueNumber();
-             _uow.UniqueNumbers.Add(dto);
-
+            _uow.UniqueNumbers.Add(dto);
+            _uow.SaveChanges();
             return dto;
         }
 
@@ -69,7 +69,7 @@ namespace SpiralWorks.Services
 
                 userAccounts.ToList().ForEach(x =>
                 {
-                     var dto =_uow.Accounts.FindById(x.AccountId);
+                    var dto = _uow.Accounts.FindById(x.AccountId);
                     accounts.Add(dto);
                 });
 
